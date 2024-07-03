@@ -12,8 +12,9 @@ FILE_NAME = f'status_summary_{TIME}.csv'
 
 
 class PepParsePipeline:
+    status_sums = defaultdict(int)
+
     def open_spider(self, spider):
-        status_sums = defaultdict(int)
         FILE_PATH.mkdir(exist_ok=True)
 
     def process_item(self, item, spider):
