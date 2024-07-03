@@ -6,23 +6,25 @@ from pathlib import Path
 # from itemadapter import ItemAdapter
 
 BASE_DIR = Path(__file__).parent.parent
-FILE_PATH = BASE_DIR / 'results'
+RESULTS = 'results'
 TIME = datetime.datetime.now().strftime('%Y-%m-%dT%H-%M')
 FILE_NAME = f'status_summary_{TIME}.csv'
 
 
 class PepParsePipeline:
-    status_sums = defaultdict(int)
+
 
     def open_spider(self, spider):
-        FILE_PATH.mkdir(exist_ok=True)
+        self.result_dir = BASE_DIR / RESULTS
+        self.result_dir.mkdir(exist_ok=True)
+        self.status_sums = defaultdict(int)
 
     def process_item(self, item, spider):
         self.status_sums[item['status']] += 1
         return item
 
     def close_spider(self, spider):
-        file_output = FILE_PATH / FILE_NAME
+        file_output = self.result_dir / FILE_NAME
         with open(file_output, 'w', encoding='utf-8') as file:
             csv.writer(file, dialect=csv.unix_dialect).writerows(
                 [
