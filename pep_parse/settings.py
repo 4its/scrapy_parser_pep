@@ -3,9 +3,9 @@ from pathlib import Path
 BOT_NAME = 'pep_parse'
 
 BASE_DIR = Path(__file__).parent.parent
-RESULTS_DIR = 'results'
+RESULTS = 'results'
 
-RESULT_DIR = BASE_DIR / RESULTS_DIR
+RESULT_DIR = BASE_DIR / RESULTS
 RESULT_DIR.mkdir(exist_ok=True)
 
 SPIDER_MODULES = ['pep_parse.spiders']
@@ -18,7 +18,7 @@ ITEM_PIPELINES = {
 }
 
 FEEDS = {
-    RESULTS_DIR + '/pep_%(time)s.csv': {
+    'results/pep_%(time)s.csv': {
         'format': 'csv',
         'fields': ['number', 'name', 'status'],
         'overwrite': True

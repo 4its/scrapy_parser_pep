@@ -2,7 +2,7 @@ import csv
 import datetime
 from collections import defaultdict
 
-from pep_parse.settings import RESULTS_DIR
+from pep_parse.settings import BASE_DIR, RESULTS
 
 
 class PepParsePipeline:
@@ -18,7 +18,7 @@ class PepParsePipeline:
         time = datetime.datetime.now().strftime('%Y-%m-%dT%H-%M')
         # file_output =
         with open(
-                f'{RESULTS_DIR}/status_summary_{time}.csv', 'w',
+                f'{BASE_DIR / RESULTS}/status_summary_{time}.csv', 'w',
                 encoding='utf-8'
         ) as file:
             csv.writer(
