@@ -4,7 +4,6 @@ from pep_parse.items import PepParseItem
 
 
 class PepSpider(scrapy.Spider):
-    # RESULT_DIR.mkdir(exist_ok=True)
 
     name = 'pep'
     allowed_domains = ['peps.python.org']
