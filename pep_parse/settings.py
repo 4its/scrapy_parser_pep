@@ -5,11 +5,12 @@ BOT_NAME = 'pep_parse'
 BASE_DIR = Path(__file__).parent.parent
 RESULTS = 'results'
 
+FILE_NAME = 'pep_%(time)s.csv'
+FILE_PATH = f'{RESULTS}/{FILE_NAME}'
+
 RESULT_DIR = BASE_DIR / RESULTS
-RESULT_DIR.mkdir(exist_ok=True)
 
 SPIDER_MODULES = ['pep_parse.spiders']
-NEWSPIDER_MODULE = SPIDER_MODULES[0]
 
 ROBOTSTXT_OBEY = True
 
@@ -18,7 +19,7 @@ ITEM_PIPELINES = {
 }
 
 FEEDS = {
-    'results/pep_%(time)s.csv': {
+    FILE_PATH: {
         'format': 'csv',
         'fields': ['number', 'name', 'status'],
         'overwrite': True

@@ -16,17 +16,16 @@ class PepParsePipeline:
 
     def close_spider(self, spider):
         time = datetime.datetime.now().strftime('%Y-%m-%dT%H-%M')
-        # file_output =
         with open(
-                f'{BASE_DIR / RESULTS}/status_summary_{time}.csv', 'w',
-                encoding='utf-8'
+            f'{BASE_DIR / RESULTS}/status_summary_{time}.csv', 'w',
+            encoding='utf-8'
         ) as file:
             csv.writer(
                 file,
                 dialect=csv.unix_dialect,
                 quoting=csv.QUOTE_NONE
-            ).writerows(
-                (('Статус', 'Количество'),
-                 *self.status_sums.items(),
-                 ('Всего', sum(self.status_sums.values())))
-            )
+            ).writerows((
+                ('Статус', 'Количество'),
+                *self.status_sums.items(),
+                ('Всего', sum(self.status_sums.values()))
+            ))
