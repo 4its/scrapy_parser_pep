@@ -3,8 +3,6 @@ import datetime
 from collections import defaultdict
 from pathlib import Path
 
-# from itemadapter import ItemAdapter
-
 BASE_DIR = Path(__file__).parent.parent
 RESULTS = 'results'
 TIME = datetime.datetime.now().strftime('%Y-%m-%dT%H-%M')
@@ -12,7 +10,6 @@ FILE_NAME = f'status_summary_{TIME}.csv'
 
 
 class PepParsePipeline:
-
 
     def open_spider(self, spider):
         self.result_dir = BASE_DIR / RESULTS
