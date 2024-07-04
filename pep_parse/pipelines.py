@@ -6,6 +6,8 @@ from pep_parse.settings import BASE_DIR, RESULTS, RESULT_DIR
 
 
 class PepParsePipeline:
+    def __init__(self):
+        RESULT_DIR.mkdir(exist_ok=True)
 
     def open_spider(self, spider):
         self.status_sums = defaultdict(int)
