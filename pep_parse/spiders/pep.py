@@ -1,11 +1,10 @@
 import scrapy
 
 from pep_parse.items import PepParseItem
-from pep_parse.settings import RESULT_DIR
 
 
 class PepSpider(scrapy.Spider):
-    RESULT_DIR.mkdir(exist_ok=True)
+    # RESULT_DIR.mkdir(exist_ok=True)
 
     name = 'pep'
     allowed_domains = ['peps.python.org']
@@ -21,10 +20,10 @@ class PepSpider(scrapy.Spider):
         number, name = ''.join(response.css(
             'h1.page-title ::text'
         ).getall())[4:].split(' – ')
-        yield PepParseItem(dict(
+        yield PepParseItem(
             number=number,
             name=name,
             status=response.css(
                 'dt:contains("Status")+dd abbr::text'
             ).get()
-        ))
+        )

@@ -2,7 +2,7 @@ import csv
 import datetime
 from collections import defaultdict
 
-from pep_parse.settings import BASE_DIR, RESULTS
+from pep_parse.settings import BASE_DIR, RESULTS, RESULT_DIR
 
 
 class PepParsePipeline:
@@ -15,6 +15,7 @@ class PepParsePipeline:
         return item
 
     def close_spider(self, spider):
+        RESULT_DIR.mkdir(exist_ok=True)
         time = datetime.datetime.now().strftime('%Y-%m-%dT%H-%M')
         with open(
             f'{BASE_DIR / RESULTS}/status_summary_{time}.csv', 'w',
