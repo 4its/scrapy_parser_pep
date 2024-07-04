@@ -8,7 +8,6 @@ class PepSpider(scrapy.Spider):
     allowed_domains = ['peps.python.org']
     start_urls = [f'https://{url}/' for url in allowed_domains]
 
-
     def parse(self, response):
         for pep_link in response.css(
             '#numerical-index a.pep.reference.internal'

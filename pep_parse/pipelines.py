@@ -1,7 +1,6 @@
 import csv
 import datetime
 from collections import defaultdict
-from pathlib import Path
 
 from pep_parse.settings import RESULTS_DIR
 
@@ -28,6 +27,6 @@ class PepParsePipeline:
                 quoting=csv.QUOTE_NONE
             ).writerows(
                 (('Статус', 'Количество'),
-                *self.status_sums.items(),
-                ('Всего', sum(self.status_sums.values())),)
+                 *self.status_sums.items(),
+                 ('Всего', sum(self.status_sums.values())))
             )
