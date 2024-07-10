@@ -17,7 +17,6 @@ class PepParsePipeline:
         return item
 
     def close_spider(self, spider):
-        RESULT_DIR.mkdir(exist_ok=True)
         time = datetime.datetime.now().strftime('%Y-%m-%dT%H-%M')
         with open(
             f'{BASE_DIR / RESULTS}/status_summary_{time}.csv', 'w',
