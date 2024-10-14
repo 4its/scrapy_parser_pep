@@ -11,7 +11,7 @@ class PepSpider(scrapy.Spider):
 
     def parse(self, response):
         for pep_link in response.css(
-            '#numerical-index a.pep.reference.internal'
+            'a.pep.reference.internal'
         ):
             yield response.follow(pep_link, callback=self.parse_pep)
 
