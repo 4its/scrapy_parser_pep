@@ -40,9 +40,6 @@ pip install -r requirements.txt
 scrapy crawl pep       
 ```
 
-### Зачем разработали этот проект?
-Данный проект разработан в рамках финального задания "Финальный проект спринта: асинхронный парсер PEP" в [Яндекс.Практикум](https://practicum.yandex.ru/python-developer-plus/)
-
 ## Разработчик проекта
 
 - [**Georgii Egiazarian**](https://github.com/4its)
